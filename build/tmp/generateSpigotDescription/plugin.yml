@@ -1,0 +1,5 @@
+main: com.AshesKaiser.AshesPlugin.Main
+name: AshesPlugin
+version: 0.1-alpha
+authors:
+ - asheskaiser

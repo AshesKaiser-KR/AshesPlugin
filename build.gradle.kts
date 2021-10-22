@@ -20,7 +20,7 @@ dependencies {
 }
 
 spigot { // plugin.yml 설정
-    authors = listOf("AshesKaiser")
+    authors = listOf("asheskaiser")
 }
 
 val shade = configurations.create("shade")

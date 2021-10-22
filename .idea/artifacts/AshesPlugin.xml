@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="AshesPlugin">
+    <output-path>$USER_HOME$/Desktop/기타/minecraft plugin/plugins</output-path>
+    <root id="archive" name="AshesPlugin.jar">
+      <element id="module-output" name="AshesPlugin.main" />
+    </root>
+  </artifact>
+</component>
