@@ -1,5 +1,6 @@
 package com.AshesKaiser.AshesPlugin
 
+import com.AshesKaiser.AshesPlugin.shopItems.ToolShopItems
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
@@ -16,12 +17,7 @@ class Main: JavaPlugin() {
         Inventories.mainShop.setItem(10, ItemStack(Material.DIAMOND_PICKAXE, 1))
 
         //도구 상점에 아이템 진열
-        Inventories.toolShop.setItem(1, ItemStack(Material.WOODEN_PICKAXE, 1))
-        Inventories.toolShop.setItem(10, ItemStack(Material.STONE_PICKAXE, 1))
-        Inventories.toolShop.setItem(19, ItemStack(Material.IRON_PICKAXE, 1))
-        Inventories.toolShop.setItem(28, ItemStack(Material.DIAMOND_PICKAXE, 1))
-        Inventories.toolShop.setItem(37, ItemStack(Material.NETHERITE_PICKAXE, 1))
-        Inventories.toolShop.setItem(46, ItemStack(Material.WOODEN_PICKAXE, 1))
+        Inventories.toolShop.setItem(10, ToolShopItems.shopItems[0])
     }
 
     override fun onDisable() {

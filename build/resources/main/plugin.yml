@@ -1,13 +1,5 @@
-name: AshesPlugin
-version: 0.1
-author: AshesKaiser
-api-version: 1.16
-
 main: com.AshesKaiser.AshesPlugin.Main
-description: AshesKaiser's first plugin
-
-commands:
-  shop:
-    description: 상점을 엽니다.
-    aliases: [상점]
-
+name: AshesPlugin
+version: 0.1-alpha
+authors:
+ - asheskaiser

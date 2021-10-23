@@ -1,8 +1,6 @@
 package com.AshesKaiser.AshesPlugin
 
-import com.AshesKaiser.AshesPlugin.shopItems.toolShopItems
-import org.bukkit.Material
-import org.bukkit.enchantments.Enchantment
+import com.AshesKaiser.AshesPlugin.shopItems.ToolShopItems
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -22,25 +20,12 @@ class EventListener: Listener {
                 10 -> e.whoClicked.openInventory(Inventories.toolShop)
             }
         }else if (e.view.title == "도구 상점") {
-            var clickedItem: toolShopItems? = null
-            clickedItem = when (e.rawSlot) {
-                10 -> toolShopItems.LOGGER_AXE
-                else -> return
+            var clickedItem: ItemStack? = null
+            if (e.rawSlot == 10){
+                if (functions.canBuy((e.whoClicked as Player), ToolShopItems.price[0])){
+                    e.whoClicked.inventory.addItem(ToolShopItems.shopItems[0])
+                }
             }
-
-        }
-    }
-
-    fun getBoughtItem(bought: toolShopItems){
-        var boughtItem: ItemStack = functions.setItemStack(bought.item, bought.amount)
-        for (i in 1..bought.ench.size){
-            boughtItem.addUnsafeEnchantment(bought.ench[i-1], bought.lvl[i-1])
-        }
-
-    }
-    fun buyTool(p: Player, item: toolShopItems){
-        if (functions.canBuyTool(p, item)){
-            Vars.money[p] = Vars.money[p]!! - item.price
 
         }
     }

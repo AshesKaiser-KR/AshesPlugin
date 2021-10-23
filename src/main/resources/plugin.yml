@@ -11,3 +11,6 @@ commands:
     description: 상점을 엽니다.
     aliases: [상점]
 
+  money:
+    description: 플레이어에게 돈을 줍니다.
+    aliases: [돈]
