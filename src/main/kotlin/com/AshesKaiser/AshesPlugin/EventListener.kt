@@ -1,12 +1,17 @@
 package com.AshesKaiser.AshesPlugin
 
 import com.AshesKaiser.AshesPlugin.shopItems.ToolShopItems
+import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.inventory.ItemStack
+import org.bukkit.scoreboard.DisplaySlot
+import org.bukkit.scoreboard.Objective
+import org.bukkit.scoreboard.Score
+import org.bukkit.scoreboard.Scoreboard
 
 class EventListener: Listener {
     @EventHandler
@@ -28,5 +33,19 @@ class EventListener: Listener {
             }
 
         }
+    }
+
+    @EventHandler
+    fun playerJoin(e: PlayerJoinEvent){
+        Vars.money[e.player] = 0
+        val manager = Bukkit.getScoreboardManager()
+        val board = manager?.newScoreboard
+
+        val o: Objective? = board?.registerNewObjective("돈", "")
+        if (o != null) {
+            o.displayName = "Kaiser Economy"
+            o.displaySlot = DisplaySlot.SIDEBAR
+        }
+
     }
 }
