@@ -10,40 +10,22 @@ import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
 
-class Main: JavaPlugin(), CommandExecutor{
+class Main: JavaPlugin(){
     override fun onEnable() {
         logger.info("플러그인 활성화")
         Bukkit.getPluginManager().registerEvents(EventListener(), this)
 
+        getCommand("shop")!!.setExecutor(Command())
+        getCommand("money")!!.setExecutor(Command())
+
         //상점에 아이템 진열
-        Inventories.mainShop.setItem(10, ItemStack(Material.DIAMOND_PICKAXE, 1))
+        Vars.mainShop.setItem(10, ItemStack(Material.DIAMOND_PICKAXE, 1))
 
         //도구 상점에 아이템 진열
-        Inventories.toolShop.setItem(10, ToolShopItems.shopItems[0])
+        Vars.toolShop.setItem(10, ToolShopItems.LOGGER_AXE.item)
     }
 
     override fun onDisable() {
         logger.info("플러그인 비활성화")
-    }
-
-    override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
-        if (sender is Player) {
-            return if (command.name == "shop") {
-                sender.openInventory(Inventories.mainShop)
-                true
-            }else if (command.name == "money"){
-                if (Vars.money.containsKey(sender)){
-                    Vars.money[sender] = args[1].toInt()
-                    true
-                }else{
-                    Vars.money.put(sender, args[1].toInt())
-                    true
-                }
-            }else{
-                false
-            }
-        }else{
-            return false
-        }
     }
 }

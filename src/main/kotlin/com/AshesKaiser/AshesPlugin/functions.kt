@@ -11,7 +11,6 @@ object functions {
         if (Vars.money.containsKey(p)){
             return if (Vars.money[p]!! >= price){
                 if (p.inventory.firstEmpty() != -1){
-                    Vars.money[p] = Vars.money[p]!! - price
                     true
                 }else{
                     p.sendMessage("인벤토리에 공간이 없습니다!")
