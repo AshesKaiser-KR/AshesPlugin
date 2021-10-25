@@ -1,11 +1,8 @@
 package com.AshesKaiser.AshesPlugin
 
-import org.bukkit.Material
-import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Player
-import org.bukkit.inventory.ItemStack
 
-object functions {
+object Functions {
 
     fun canBuy(p: Player, price: Int): Boolean {
         if (Vars.money.containsKey(p)){
@@ -22,16 +19,5 @@ object functions {
             }
         }
         return false
-    }
-
-    fun setShopItem(m: Material, a: Int, enc: List<Enchantment>, lvl: List<Int>, name: String, lore: String): ItemStack{
-        val item = ItemStack(m, a)
-        for(i in 1..enc.size){
-            item.addUnsafeEnchantment(enc[i-1], lvl[i-1])
-        }
-        val im = item.itemMeta
-        im?.setDisplayName(name)
-        im?.lore = listOf(lore)
-        return item
     }
 }

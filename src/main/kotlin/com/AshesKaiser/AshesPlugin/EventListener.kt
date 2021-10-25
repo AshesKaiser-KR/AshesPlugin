@@ -1,9 +1,7 @@
 package com.AshesKaiser.AshesPlugin
 
-import com.AshesKaiser.AshesPlugin.functions.canBuy
+import com.AshesKaiser.AshesPlugin.Functions.canBuy
 import com.AshesKaiser.AshesPlugin.shopItems.ToolShopItems
-
-import org.bukkit.entity.HumanEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -14,7 +12,9 @@ import org.bukkit.event.player.PlayerJoinEvent
 class EventListener: Listener {
     @EventHandler
     fun onPlayerJoin(e: PlayerJoinEvent){
-        Vars.money[e.player] = 0
+        if (!Vars.money.containsKey(e.player)){
+            Vars.money[e.player] = 0
+        }
     }
     @EventHandler
     fun shopSelect(e: InventoryClickEvent) {
@@ -22,31 +22,16 @@ class EventListener: Listener {
             when (e.rawSlot) {
                 10 -> e.whoClicked.openInventory(Vars.toolShop)
             }
-        }else if (e.view.title == "도구 상점") {
+        } else if (e.view.title == "도구 상점") {
             if (e.click == ClickType.LEFT){
-                toolShopBuy(e.rawSlot, e.whoClicked)
+                when (e.rawSlot){
+                    10 -> {
+                        if (canBuy(e.whoClicked as Player, ToolShopItems.LOGGER_AXE.price)){
+                            Vars.money[e.whoClicked as Player] = Vars.money[e.whoClicked]!! - ToolShopItems.LOGGER_AXE.price
+                        }
+                    }
+                }
             }
         }
     }
-
-    @EventHandler
-    fun playerJoin(e: PlayerJoinEvent){
-        Vars.money[e.player] = 0
-    }
-
-    fun toolShopBuy(slot: Int, buyer: HumanEntity){
-        var boughtItem: ToolShopItems? = null
-        when (slot){
-            10 -> boughtItem = ToolShopItems.LOGGER_AXE
-            else -> null
-        }
-        if (boughtItem != null){
-            if (canBuy(buyer as Player, boughtItem.price)){
-                Vars.money[buyer] = Vars.money[buyer]!! - boughtItem.price
-            }
-        }
-    }
-
-
-
 }

@@ -1,6 +1,5 @@
 package com.AshesKaiser.AshesPlugin.shopItems
 
-import com.AshesKaiser.AshesPlugin.functions
 import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
