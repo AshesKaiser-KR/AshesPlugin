@@ -1,5 +1,6 @@
 package com.AshesKaiser.AshesPlugin
 
+import com.AshesKaiser.AshesPlugin.shopItems.BlockShopItems
 import com.AshesKaiser.AshesPlugin.shopItems.ToolShopItems
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -23,6 +24,8 @@ class Main: JavaPlugin(), CommandExecutor {
         //도구 상점에 아이템 진열
         Vars.toolShop.setItem(10, ToolShopItems.LOGGER_AXE.item)
 
+        //블럭 상점 아이템 진열
+        Vars.blockShop.setItem(10, BlockShopItems.STONE.item)
         Bukkit.getPluginManager().registerEvents(EventListener(), this)
     }
 

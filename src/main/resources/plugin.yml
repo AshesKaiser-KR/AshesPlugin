@@ -6,11 +6,5 @@ description: AshesKaiser's first plugin
 
 commands:
   shop:
-    aliases: 상점
-    description: 상점을 엽니다.
-    usage: /shop으로 쓸 수 있습니다.
-
   money:
-    aliases: 상점
-    description: 돈을 정합니다.
-    usage: /money
+

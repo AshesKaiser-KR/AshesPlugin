@@ -8,4 +8,5 @@ object Vars {
     val money by lazy { HashMap<Player, Int>() }
     var mainShop: Inventory = Bukkit.createInventory(null, 27, "상점")
     var toolShop: Inventory = Bukkit.createInventory(null, 54, "도구 상점")
+    var blockShop: Inventory = Bukkit.createInventory(null, 54, "블럭 상점")
 }
